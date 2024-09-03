@@ -17,7 +17,7 @@ class Apiservices {
     final response = await http.get(Uri.parse(destinationUrl));
 
     if (response.statusCode == 200) {
-      log("Success");
+      log("Success : ${response.body}");
       return UpcomingMovieModel.fromJson(jsonDecode(response.body));
     }
     throw Exception("Failed to load upcoming movies!");

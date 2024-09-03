@@ -24,46 +24,45 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: kBackgroundColor,
-          centerTitle: true,
-          title: Image.asset(
-            "assets/logo.png",
-            height: 58,
-            width: 122,
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: InkWell(
-                onTap: () {},
-                child: const Icon(
-                  Icons.search,
-                  size: 28,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(7),
-              child: Container(
-                color: const Color.fromARGB(255, 255, 225, 0),
-                height: 28,
-                width: 28,
-              ),
-            ),
-            const SizedBox(
-              width: 18,
-            )
-          ],
+      appBar: AppBar(
+        backgroundColor: kBackgroundColor,
+        centerTitle: true,
+        title: Image.asset(
+          "assets/logo.png",
+          height: 58,
+          width: 122,
         ),
-        body: SingleChildScrollView(
-            child: Column(
-          children: [
-            MovieCard(future: upcomingFuture, headlineText: "Upcominng Movies"),
-          ],
-        )
-      )
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: InkWell(
+              onTap: () {},
+              child: const Icon(
+                Icons.search,
+                size: 28,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(7),
+            child: Container(
+              color: const Color.fromARGB(255, 255, 225, 0),
+              height: 28,
+              width: 28,
+            ),
+          ),
+          const SizedBox(
+            width: 18,
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
+          child: Column(
+        children: [
+          MovieCard(future: upcomingFuture, headlineText: "Upcominng Movies"),
+        ],
+      )),
     );
   }
 }
