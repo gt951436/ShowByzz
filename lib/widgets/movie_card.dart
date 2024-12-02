@@ -15,6 +15,7 @@ class MovieCard extends StatelessWidget {
         builder: (context, snapshot) {
           var data = snapshot.data?.results;
           return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 headlineText,
@@ -23,8 +24,12 @@ class MovieCard extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              ListView.builder(
+              Expanded(
+                  child: ListView.builder(
+                padding: const EdgeInsets.all(11),
                 itemCount: data?.length, // not null length
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
@@ -33,7 +38,7 @@ class MovieCard extends StatelessWidget {
                     child: Image.network("$imageUrl${data?[index].posterPath}"),
                   );
                 },
-              )
+              ))
             ],
           );
         });

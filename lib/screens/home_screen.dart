@@ -60,7 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
           child: Column(
         children: [
-          MovieCard(future: upcomingFuture, headlineText: "Upcominng Movies"),
+          SizedBox(
+            height: 215,
+            child: MovieCard(
+                future: upcomingFuture, headlineText: "Upcoming Movies"),
+          )
         ],
       )),
     );
