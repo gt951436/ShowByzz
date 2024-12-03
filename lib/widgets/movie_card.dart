@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:showbyzz/common/utils.dart';
 import 'package:showbyzz/models/upcoming_movies_model.dart';
+import 'package:showbyzz/screens/movie_detailed_screen.dart';
 
 class MovieCard extends StatelessWidget {
   final Future<UpcomingMovieModel> future;
@@ -33,8 +34,8 @@ class MovieCard extends StatelessWidget {
 
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: InkWell(
+                      padding: const EdgeInsets.all(5.0),
+                      child: InkWell(
                         onTap: () {
                           Navigator.push(
                             context,
@@ -46,12 +47,13 @@ class MovieCard extends StatelessWidget {
                           );
                         },
                         child: Container(
-                            decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                           child: Image.network(
                               "$imageUrl${data?[index].posterPath}"),
-                        )),
-                  );
+                        ),
+                      ));
                 },
               ))
             ],
