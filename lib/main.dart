@@ -16,15 +16,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ShowByzz',
-      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.dark,
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(
-          surface: Colors.black,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+          ),
+          bodyMedium: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
         ),
         fontFamily: GoogleFonts.ptSans().fontFamily,
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)
+            .copyWith(background: Colors.black),
       ),
       home: const SplashScreen(),
     );
