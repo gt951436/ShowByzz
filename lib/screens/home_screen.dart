@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<UpcomingMovieModel> upcomingFuture;
+  
   Apiservices apiServices = Apiservices();
 
   @override

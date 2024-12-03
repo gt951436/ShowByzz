@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:showbyzz/common/utils.dart';
 import 'package:showbyzz/models/upcoming_movies_model.dart';
 
@@ -26,16 +27,30 @@ class MovieCard extends StatelessWidget {
               ),
               Expanded(
                   child: ListView.builder(
-                padding: const EdgeInsets.all(11),
-                itemCount: data?.length, // not null length
+                itemCount: data!.length, // not null length
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
+
                 itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                    ),
-                    child: Image.network("$imageUrl${data?[index].posterPath}"),
+                  return Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieDetailScreen(
+                                movieId: data[index].id,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(
+                              "$imageUrl${data?[index].posterPath}"),
+                        )),
                   );
                 },
               ))
