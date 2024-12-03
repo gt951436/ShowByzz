@@ -39,6 +39,9 @@ class BottomNavBar extends StatelessWidget {
                 text: "New & Hot",
               ),
             ],
+            // unselectedLabelColor: Color(0xFF999999),
+            // labelColor: Colors.white,
+            // indicatorColor: Colors.transparent,
           ),
         ),
         body: const TabBarView(children: [
