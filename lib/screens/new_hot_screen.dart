@@ -12,7 +12,7 @@ class _NewAndHotScreenState extends State<NewAndHotScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("This is New and Hot Screen"),
+        child: Text(""),
       ),
     );
   }

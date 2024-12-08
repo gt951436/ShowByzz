@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:showbyzz/common/utils.dart';
+import 'package:showbyzz/models/tv_series_model.dart';
 import 'package:showbyzz/models/upcoming_movies_model.dart';
 import 'package:showbyzz/services/api_services.dart';
 import 'package:showbyzz/widgets/movie_card.dart';
@@ -13,13 +14,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<UpcomingMovieModel> upcomingFuture;
-  
+  late Future<UpcomingMovieModel> nowPlaying;
+  late Future<TvSeriesModel> topRatedShows;
   Apiservices apiServices = Apiservices();
 
   @override
   void initState() {
-    super.initState();
     upcomingFuture = apiServices.getUpcomingMovies();
+    nowPlaying = apiServices.getNowPlayingMovies();
+    topRatedShows = apiServices.getTopRatedSeries();
+    super.initState();
   }
 
   @override
@@ -28,11 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
         centerTitle: true,
-        title: Image.asset(
-          "assets/logo.png",
-          height: 58,
-          width: 122,
-        ),
+        // title: Image.asset(
+        //   "assets/logo.png",
+        //   height: 58,
+        //   width: 122,
+        // ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
@@ -61,10 +65,18 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
           child: Column(
         children: [
+          FutureBuilder<TvSeriesModel>(
+            future: topRatedShows,
+            builder: (context, snapshot) {
+              return const SizedBox();
+            },
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           SizedBox(
             height: 215,
-            child: MovieCard(
-                future: upcomingFuture, headlineText: "Upcoming Movies"),
+            child: MovieCard(future: nowPlaying, headlineText: "Now Playing.."),
           )
         ],
       )),
